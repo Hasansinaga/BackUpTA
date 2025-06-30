@@ -32,8 +32,8 @@ import 'package:dairytrack_mobile/views/feedManagement/dailyFeedItem/listFeedIte
 import 'package:dairytrack_mobile/views/feedManagement/feed/listFeed.dart';
 import 'package:dairytrack_mobile/views/feedManagement/feedStock/listFeedStock.dart';
 import 'package:dairytrack_mobile/views/feedManagement/feedType/listFeedType.dart';
-import 'package:dairytrack_mobile/views/feedManagement/model/feed.dart';
 import 'package:dairytrack_mobile/views/feedManagement/nutrition/listNutrition.dart';
+import 'package:dairytrack_mobile/views/feedManagement/grafik/dailyFeedUsage.dart';
 
 // Import views for navigation
 import 'cowManagement/listOfCowsView.dart';
@@ -283,19 +283,24 @@ class _InitialAdminDashboardState extends State<InitialAdminDashboard>
           route: 'feed-schedule',
           widget: () => DailyFeedView(),
         ),
-         NavigationItem(
-          icon: Icons.monitor_heart,
-          label: 'Health Dashboard', // Changed from 'HealthDashboard'
-          route: 'health-dashboard',
-          widget: () => HealthDashboardView(),
-        ),
         NavigationItem(
           icon: Icons.checklist,
           label: 'Daily Feed Item', // Changed from 'Feed Item Harian'
           route: 'feed-item',
           widget: () => DailyFeedItemsPage(),
         ),
-       
+        NavigationItem(
+          icon: Icons.checklist,
+          label: 'Feed Usage', // Changed from 'Feed Item Harian'
+          route: 'feed-usage',
+          widget: () => FeedUsagePage(),
+        ),
+        NavigationItem(
+          icon: Icons.monitor_heart,
+          label: 'Health Dashboard', // Changed from 'HealthDashboard'
+          route: 'health-dashboard',
+          widget: () => HealthDashboardView(),
+        ),
       ];
 
   @override
@@ -440,12 +445,13 @@ class _InitialAdminDashboardState extends State<InitialAdminDashboard>
       navigationItems[23]
     ];
     final feedManagement = [
-      navigationItems[19],
       navigationItems[20],
       navigationItems[21],
       navigationItems[22],
       navigationItems[23],
-      navigationItems[25]
+      navigationItems[24],
+      navigationItems[25],
+      navigationItems[26],
     ];
     final productsSales = [
       navigationItems[13],
@@ -467,8 +473,8 @@ class _InitialAdminDashboardState extends State<InitialAdminDashboard>
                 Colors.deepPurple, productsSales),
             _buildFabGroup(
                 'Feed Management', Icons.grass, Colors.green, feedManagement),
-            _buildFabGroup('Health Check Management', Icons.medical_services, Colors.red,
-                cattleHealth),
+            _buildFabGroup('Health Check Management', Icons.medical_services,
+                Colors.red, cattleHealth),
             _buildFabGroup('Content Management', Icons.library_books,
                 Colors.amber, contentManagement),
             _buildFabGroup(
